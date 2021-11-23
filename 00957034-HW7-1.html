@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Doraemon</title>
+    <style type="text/css">
+        @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+
+        img {
+            width: 300px;
+            height: 300px;
+        }
+
+		div, input {
+            font-family: Noto Sans TC, Perpetua, serif;
+			width: 300px;            
+        }
+		
+		div {
+            color: darkblue;
+            text-align: center;	
+			font-size: 24px;			
+        }
+
+		input {
+			font-size: 18px;
+			font-weight: bold;
+		}
+    </style>
+    <script>
+        var prop = ["任意門", "時光機", "竹蜻蜓", "時光布", "記憶麵包", "縮小燈", "翻譯蒟蒻", "如果電話亭", "穿透環", "更衣照相機"]
+        var value, props, dicerolling, accessory, messages
+        function start(){
+            props = document.getElementById("play");
+            dicerolling = document.getElementById("dicerolling");
+            accessory = document.getElementById("accessory");
+            messages = document.getElementById("messages");
+            var button = props;
+            button.addEventListener("click", play, false);
+            var diceSound = dicerolling;
+            diceSound.addEventListener( "ended", set, false );
+        }
+        function play(){
+            accessory.setAttribute("src", "blank.png");
+            messages.innerHTML = "";
+            dicerolling.play();
+
+        }
+        function set(){
+            value = Math.floor(1 + Math.random() * 10);
+            if(value == 10)
+                accessory.setAttribute("src", "10.png");
+            else
+                accessory.setAttribute("src", "0" + value + ".png");
+            messages.innerHTML = "您抽到" + prop[value - 1] + "!";
+        }
+        window.addEventListener("load", start, false);
+    </script>
+</head>
+
+<body>
+    <audio id = "dicerolling" preload = "auto">
+        <source src = "doraemon.mp3"
+           type = "audio/mpeg">
+        Browser does not support audio tag
+    </audio>
+    <img id="accessory" src="00.png" alt="accessory">
+    <form action="#">
+        <input id="play" type="button" value="抽道具">
+    </form>
+    <div id="messages">請按下Button抽出道具</div>
+</body>
+
+</html>
