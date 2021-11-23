@@ -32,25 +32,85 @@
         }
     </style>
     <script type="text/javascript">
-        // TODO
+        var tags
+        var title, author, year, url
+        var text
+        function start() {
+            var button = document.getElementById("addButton");
+            button.addEventListener("click", saveSearch, false);
+            var button2 = document.getElementById("removeAllButton");
+            button2.addEventListener("click", deleteTag, false);
+        }
+        function saveSearch() 
+        {
+            title = document.getElementById("title");
+            author = document.getElementById("author");
+            year = document.getElementById("year");
+            url = document.getElementById("url");
+            var date = new Date().getTime();
+            text = {"title":title.value, "author":author.value, "year":year.value, "url":url.value};
+            var json_change = JSON.stringify(text);
+            localStorage.setItem("ntou-" + date, json_change);
+            console.log("ntou-" + date, json_change); 
+            title.value = ""; 
+            author.value = "";
+            year.value = "";
+            url.value = ""; 
+            loadSearches(); 
+        }
+        function loadSearches() 
+        {
+            tags = []; 
+            var length = localStorage.length; 
+            for (var i = 0; i < length; ++i) {
+                tags[i] = localStorage.key(i);
+            } 
+            var markup = "<table><tr><th>Title</th><th>Author</th><th>Year</th><th>URL</th></tr>";
+            for (var tag in tags) 
+            {
+                if(tags[tag].startsWith("ntou")){
+                    markup += "<tr><td>" + JSON.parse(localStorage.getItem(tags[tag])).title + "</td><td>" + JSON.parse(localStorage.getItem(tags[tag])).author + "</td><td>" + JSON.parse(localStorage.getItem(tags[tag])).year + "</td><td><a href = '" + JSON.parse(localStorage.getItem(tags[tag])).url + "'>" + JSON.parse(localStorage.getItem(tags[tag])).url + "</a></td></tr>";                   
+                }
+            } 
+            markup += "</table>";
+            document.getElementById("display").innerHTML = markup;
+        } 
+        function deleteTag() 
+        {
+            localStorage.clear();
+            alert("All items were removed!");
+            loadSearches();
+        }
+        window.addEventListener("load", start, false);
     </script>
 </head>
 
 <body>
     <form action="#">
         <p>
-            <label>Book Title:</label>
-            <label>Author(s):</label>
-            <label>Year:</label>
-            <label>Book URL:</label>
-        </p>
-        <p>
-            <input type="button" value="Add New Item" id="addButton">
-            <input type="button" value="Remove All Items" id="removeAllButton">
+            <a href = "">Github Link</a><br><br>
+            <label for = "title">Book Title:</label>
+            <input type = "text" id = "title">
+            <label for = "author">Author(s):</label>
+            <input type = "text" id = "author">
+            <label for = "year">Year:</label>
+            <input type = "number" id = "year">
+            <label for = "url">Book URL:</label>
+            <input type = "url" id = "url"><br><br>
+            <input type = "button" value = "Add New Item" id = "addButton">
+            <input type = "button" value = "Remove All Items" id = "removeAllButton">
         </p>
     </form>
     <hr>
     <div id="display">
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Year</th>
+                <th>URL</th>
+            </tr>
+        </table>
     </div>
 </body>
 
