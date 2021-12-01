@@ -36,6 +36,7 @@
         var title, author, year, url
         var text
         function start() {
+            loadSearches();
             var button = document.getElementById("addButton");
             button.addEventListener("click", saveSearch, false);
             var button2 = document.getElementById("removeAllButton");
