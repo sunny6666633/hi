@@ -106,4 +106,5 @@
 {"ID": 106, "bytes": 2, "cycle": 2, "bytes2": "11011nnn offset", "Encoding": null, "Mnemonic": "DJNZ", "Operands": "Rn, offset", "operation": "PC = PC + 2\nRn = Rn - 1\nIF Rn <> 0\n  PC = PC + offset"},
 {"ID": 107, "bytes": 1, "cycle": 2, "bytes2": "1111001i", "Encoding": null, "Mnemonic": "MOVX", "Operands": "@Ri, A", "operation": "(Ri) = A"},
 {"ID": 108, "bytes": 1, "cycle": 2, "bytes2": "11100000", "Encoding": "E0", "Mnemonic": "MOVX", "Operands": "A, @DPTR", "operation": "A = (DPTR)"},
-{"ID": 109, "bytes": 1, "cycle": 2, "bytes2": "1110001i", "Encoding": null, "Mnemonic": "MOVX", "Operands": "A, @Ri", "operation": "A = (Ri)"}]
+{"ID": 109, "bytes": 1, "cycle": 2, "bytes2": "1110001i", "Encoding": null, "Mnemonic": "MOVX", "Operands": "A, @Ri", "operation": "A = (Ri)"},
+{"ID": 110, "bytes": 1, "cycle": 1, "bytes2": "00000000", "Encoding": "00", "Mnemonic": "NOP", "Operands": "", "operation": "PC = PC + 1"}]
