@@ -1,0 +1,644 @@
+[
+{
+    "instruction": "NOP",
+    "operand": "NULL",
+    "chinese": "NOP沒有做任何動作，此指令被用來產生延遲或在程式記憶體保留空間。",
+    "english": "The NOP instruction does nothing.NOP is typically used to generate a delay in execution or to reserve space in code memory."
+},
+{
+    "instruction": "AJMP",
+    "operand": "addr11",
+    "chinese": "AJMP為絕對轉移指令。目標位址為PC加2後的高5位(A15~A11)和指令第一位元組的低高3位(A10~8)，以及第二位元組(A7~0)構成。可跳躍範圍為2^11B(2KB)。",
+    "english": "The AJMP instruction transfers program execution to the specified address.The address is formed by combining the 5 high-order bits of the address of the following instruction, the 3 high-order bits of the opcode, and the second byte of the instruction."
+},
+{
+    "instruction": "LJMP",
+    "operand": "addr16",
+    "chinese": "LJMP為長轉移指令。此指令將程式處理程序無條件轉移至指令的16-bit位址。",
+    "english": "The LJMP instruction transfers program execution to the specified 16-bit address."
+},
+{
+    "instruction": "RR",
+    "operand": "A",
+    "chinese": "RR將累加器中的8個位元向右旋轉1-bit。",
+    "english": "The RR instruction rotates the eight bits in the accumulator right one bit position."
+},
+{
+    "instruction": "INC",
+    "operand": "@Ri",
+    "chinese": "將Ri中的值加1。",
+    "english": "Increments the value at Ri by 1."
+},
+{
+    "instruction": "INC",
+    "operand": "A",
+    "chinese": "將累加器中的值加1。",
+    "english": "increments the value of accumulator by 1."
+},
+{
+    "instruction": "INC",
+    "operand": "direct",
+    "chinese": "將位址指向的值加1。",
+    "english": "increments the value pointed by the direct address by 1."
+},
+{
+    "instruction": "INC",
+    "operand": "Rn",
+    "chinese": "將Rn值加1。",
+    "english": "increments the Rn by 1."
+},
+{
+    "instruction": "JBC",
+    "operand": "bit, offset",
+    "chinese": "當指定的bit值為1時，跳躍至特定位址，並將該bit清為0。",
+    "english": "The JBC instruction branches to the address specified in the second operand if the value of the bit specified in the first operand is 1.If the bit specified in the first operand is set, it is cleared."
+},
+{
+    "instruction": "ACALL",
+    "operand": "addr11",
+    "chinese": "ACALL呼叫指定的子程式。PC加2，存入堆疊。目標位址為PC的高5位(A15~A11)、指令第一位元組的底高3位(A10~8)，及第二位元組(A7~0)組成。子程式的首位址需在ACALL後的2KB內。",
+    "english": "The ACALL instruction calls a subroutine located at the specified address.The PC is incremented twice then stored on the stack.The address of the subroutine is calculated by combining the 5 high-order bits of the incremented PC (for A15-A11), the 3 high-order bits of the ACALL instruction opcode (for A10-A8), and the second byte of the instruction (for A7-A0). "
+},
+{
+    "instruction": "LCALL",
+    "operand": "addr16",
+    "chinese": "LCALL呼叫指定的子程式。PC加3，存入堆疊，並將指令的第二位元組(A15~8)及第三位元組(A7~0)載入至PC的高位元及低位元中。",
+    "english": "The LCALL instruction calls a subroutine located at the specified address.The high-order and low-order bytes of the PC are loaded from the second and third bytes of the instruction respectively."
+},
+{
+    "instruction": "RRC",
+    "operand": "A",
+    "chinese": "RRC將累加器中的8個位元和進位位元向右旋轉1-bit。",
+    "english": "The RRC instruction rotates the eight bits in the accumulator and the one bit in the carry flag right one bit position."
+},
+{
+    "instruction": "DEC",
+    "operand": "@Ri",
+    "chinese": "將Ri中的值減1。",
+    "english": "Decrements the value at Ri by 1."
+},
+{
+    "instruction": "DEC",
+    "operand": "A",
+    "chinese": "將累加器中的值減1。",
+    "english": "Decrements the value of accumulator by 1."
+},
+{
+    "instruction": "DEC",
+    "operand": "direct",
+    "chinese": "將位址指向的值減1。",
+    "english": "Decrements the value pointed by the direct address by 1."
+},
+{
+    "instruction": "DEC",
+    "operand": "Rn",
+    "chinese": "將Rn值減1。",
+    "english": "Decrements the Rn by 1."
+},
+{
+    "instruction": "JB",
+    "operand": "bit, offset",
+    "chinese": "當指定 bit 的值為 1 時進行跳躍的動作。",
+    "english": "The JB instruction branches to the address specified in the second operand if the value of the bit specified in the first operand is 1."
+},
+{
+    "instruction": "RET",
+    "operand": "NULL",
+    "chinese": "RET將PC的高位元與低位元從堆疊中POP出來，執行程序從該位址繼續往下執行。",
+    "english": "The RET instruction pops the high-order and low-order bytes of the PC from the stack.Program execution resumes from the resulting address."
+},
+{
+    "instruction": "RL",
+    "operand": "A",
+    "chinese": "RR將累加器中的8個位元向左旋轉1-bit。",
+    "english": "The RL instruction rotates the eight bits in the accumulator left one bit position."
+},
+{
+    "instruction": "ADD",
+    "operand": "A, #immediate",
+    "chinese": "將立即值和累加器中的值相加，並存回累加器中。",
+    "english": "Adds the immediate value to the accumulator and stores the results back in the accumulator."
+},
+{
+    "instruction": "ADD",
+    "operand": "A, @Ri",
+    "chinese": "將Ri中的值和累加器中的值相加，並存回累加器中。",
+    "english": "Adds the value at Ri to the accumulator and stores the results back in the accumulator."
+},
+{
+    "instruction": "ADD",
+    "operand": "A, direct",
+    "chinese": "將位址指向的值和累加器中的值相加，並存回累加器中。",
+    "english": "Adds the value pointed by the direct address to the accumulator and stores the results back in the accumulator."
+},
+{
+    "instruction": "ADD",
+    "operand": "A, Rn",
+    "chinese": "將Rn和累加器中的值相加，並存回累加器中。",
+    "english": "Adds the value of Rn to the accumulator and stores the results back in the accumulator."
+},
+{
+    "instruction": "JNB",
+    "operand": "bit, offset",
+    "chinese": "當指定 bit 的值為0時進行跳躍的動作。",
+    "english": "The JNB instruction branches to the specified address if the specified bit operand has a value of 0."
+},
+{
+    "instruction": "RETI",
+    "operand": "NULL",
+    "chinese": "RETI將PC的高位元與低位元從堆疊中POP出來，執行程序從該位址繼續往下執行，返回時清空相應的的狀態的暫存器。",
+    "english": "The RETI instruction is used to end an interrupt service routine.The RETI instruction does not restore the PSW to its value before the interrupt. The interrupt service routine must save and restore the PSW."
+},
+{
+    "instruction": "RLC",
+    "operand": "A",
+    "chinese": "RRC將累加器中的8個位元和進位位元向左旋轉1-bit。",
+    "english": "The RLC instruction rotates the eight bits in the accumulator and the one bit in the carry flag left one bit position."
+},
+{
+    "instruction": "ADDC",
+    "operand": "A, #immediate",
+    "chinese": "將立即值和累加器中的值以及進位位元及進位位元相加，並存回累加器中。",
+    "english": "Adds the immediate value and the value of the carry flag to the accumulator and stores the results back in the accumulator."
+},
+{
+    "instruction": "ADDC",
+    "operand": "A, @Ri",
+    "chinese": "將Ri中的值和累加器中的值及進位位元相加，並存回累加器中。",
+    "english": "Adds the value at Ri and the value of the carry flag to the accumulator and stores the results back in the accumulator."
+},
+{
+    "instruction": "ADDC",
+    "operand": "A, direct",
+    "chinese": "將位址指向的值和累加器中的值及進位位元相加，並存回累加器中。",
+    "english": "Adds the value pointed by the direct address and the value of the carry flag to the accumulator and stores the results back in the accumulator."
+},
+{
+    "instruction": "ADDC",
+    "operand": "A, Rn",
+    "chinese": "將Rn和累加器中的值及進位位元相加，並存回累加器中。",
+    "english": "Adds the value of Rn and the value of the carry flag to the accumulator and stores the results back in the accumulator."
+},
+{
+    "instruction": "JC",
+    "operand": "offset",
+    "chinese": "當進位位元為1時，跳躍至指定位址。",
+    "english": "The JC instruction branches to the specified address if the carry flag is set."
+},
+{
+    "instruction": "ORL",
+    "operand": "A, #immediate",
+    "chinese": "ORL將累加器和立即值做OR運算，並把結果存至累加器",
+    "english": "The ORL instruction performs a bitwise logical OR operation on the accumulator and immediate value, the result of which is stored in the accumulator."
+},
+{
+    "instruction": "ORL",
+    "operand": "A, @Ri",
+    "chinese": "ORL將累加器和Ri中的值做OR運算，並把結果存至目累加器",
+    "english": "The ORL instruction performs a bitwise logical OR operation on the accumulator and the value at Ri, the result of which is stored in the accumulator."
+},
+{
+    "instruction": "ORL",
+    "operand": "A, direct",
+    "chinese": "ORL將累加器和指定位址的值做OR運算，並把結果存至目累加器",
+    "english": "The ORL instruction performs a bitwise logical OR operation on the accumulator and the value pointed by the direct address, the result of which is stored in the accumulator."
+},
+{
+    "instruction": "ORL",
+    "operand": "A, Rn",
+    "chinese": "ORL將累加器和Rn做OR運算，並把結果存至累加器",
+    "english": "The ORL instruction performs a bitwise logical OR operation on the accumulator and Rn, the result of which is stored in the accumulator."
+},
+{
+    "instruction": "ORL",
+    "operand": "C, /bit",
+    "chinese": "ORL將進位位元和/bit做OR運算，並把結果存至進位位元",
+    "english": "The ORL instruction performs a bitwise logical OR operation on the carry and (NOT)bit, the result of which is stored in the carry."
+},
+{
+    "instruction": "ORL",
+    "operand": "C, bit",
+    "chinese": "ORL將進位位元和bit做OR運算，並把結果存至進位位元",
+    "english": "The ORL instruction performs a bitwise logical OR operation on the carry and bit, the result of which is stored in the carry."
+},
+{
+    "instruction": "ORL",
+    "operand": "direct, #immediate",
+    "chinese": "ORL將指定位址的值和立即值做OR運算，並把結果存至指定位址",
+    "english": "The ORL instruction performs a bitwise logical OR operation on the value pointed by the direct address and immediate value, the result of which is stored in the dirrect address."
+},
+{
+    "instruction": "ORL",
+    "operand": "direct, A",
+    "chinese": "ORL將累加器和指定位址的值做OR運算，並把結果存至指定位址",
+    "english": "The ORL instruction performs a bitwise logical OR operation on the value pointed by the direct address and the accumulator, the result of which is stored in the dirrect address."
+},
+{
+    "instruction": "JNC",
+    "operand": "offset",
+    "chinese": "當進位旗標為0時，跳躍至指定位址。",
+    "english": "The JNC instruction transfers program control to the specified address if the carry flag is 0."
+},
+{
+    "instruction": "ANL",
+    "operand": "A, #immediate",
+    "chinese": "ANL將累加器和立即值做AND運算，並把結果存至累加器",
+    "english": "The ANL instruction performs a bitwise logical AND operation on the accumulator and immediate value, the result of which is stored in the accumulator."
+},
+{
+    "instruction": "ANL",
+    "operand": "A, @Ri",
+    "chinese": "ANL將累加器和Ri中的值做AND運算，並把結果存至目累加器",
+    "english": "The ANL instruction performs a bitwise logical AND operation on the accumulator and the value at Ri, the result of which is stored in the accumulator."
+},
+{
+    "instruction": "ANL",
+    "operand": "A, direct",
+    "chinese": "ANL將累加器和指定位址的值做AND運算，並把結果存至目累加器",
+    "english": "The ANL instruction performs a bitwise logical AND operation on the accumulator and the value pointed by the direct address, the result of which is stored in the accumulator."
+},
+{
+    "instruction": "ANL",
+    "operand": "A, Rn",
+    "chinese": "ANL將累加器和Rn做AND運算，並把結果存至累加器",
+    "english": "The ANL instruction performs a bitwise logical AND operation on the accumulator and Rn, the result of which is stored in the accumulator."
+},
+{
+    "instruction": "ANL",
+    "operand": "C, /bit",
+    "chinese": "ANL將進位位元和/bit做AND運算，並把結果存至進位位元",
+    "english": "The ANL instruction performs a bitwise logical AND operation on the carry and (NOT)bit, the result of which is stored in the carry."
+},
+{
+    "instruction": "ANL",
+    "operand": "C, bit",
+    "chinese": "ANL將進位位元和bit做AND運算，並把結果存至進位位元",
+    "english": "The ANL instruction performs a bitwise logical AND operation on the carry and bit, the result of which is stored in the carry."
+},
+{
+    "instruction": "ANL",
+    "operand": "direct, #immediate",
+    "chinese": "ANL將指定位址的值和立即值做AND運算，並把結果存至指定位址",
+    "english": "The ANL instruction performs a bitwise logical AND operation on the value pointed by the direct address and immediate value, the result of which is stored in the dirrect address."
+},
+{
+    "instruction": "ANL",
+    "operand": "direct, A",
+    "chinese": "ANL將累加器和指定位址的值做AND運算，並把結果存至指定位址",
+    "english": "The ANL instruction performs a bitwise logical AND operation on the value pointed by the direct address and the accumulator, the result of which is stored in the dirrect address."
+},
+{
+    "instruction": "JZ",
+    "operand": "offset",
+    "chinese": "當累加器中的值為0時，跳躍至指定位址。",
+    "english": "The JZ instruction transfers control to the specified address if the value in the accumulator is 0."
+},
+{
+    "instruction": "XRL",
+    "operand": "A, #immediate",
+    "chinese": "XRL將累加器和立即值做XOR運算，並把結果存至累加器",
+    "english": "The XRL instruction performs a bitwise logical XOR operation on the accumulator and immediate value, the result of which is stored in the accumulator."
+},
+{
+    "instruction": "XRL",
+    "operand": "A, @Ri",
+    "chinese": "XRL將累加器和Ri中的值做XOR運算，並把結果存至目累加器",
+    "english": "The XRL instruction performs a bitwise logical XOR operation on the accumulator and the value at Ri, the result of which is stored in the accumulator."
+},
+{
+    "instruction": "XRL",
+    "operand": "A, direct",
+    "chinese": "XRL將累加器和指定位址的值做XOR運算，並把結果存至目累加器",
+    "english": "The XRL instruction performs a bitwise logical XOR operation on the accumulator and the value pointed by the direct address, the result of which is stored in the accumulator."
+},
+{
+    "instruction": "XRL",
+    "operand": "A, Rn",
+    "chinese": "XRL將累加器和Rn做XOR運算，並把結果存至累加器",
+    "english": "The XRL instruction performs a bitwise logical XOR operation on the accumulator and Rn, the result of which is stored in the accumulator."
+},
+{
+    "instruction": "XRL",
+    "operand": "direct, #immediate",
+    "chinese": "XRL將指定位址的值和立即值做XOR運算，並把結果存至指定位址",
+    "english": "The XRL instruction performs a bitwise logical XOR operation on the value pointed by the direct address and immediate value, the result of which is stored in the dirrect address."
+},
+{
+    "instruction": "XRL",
+    "operand": "direct, A",
+    "chinese": "XRL將累加器和指定位址的值做XOR運算，並把結果存至指定位址",
+    "english": "The XRL instruction performs a bitwise logical XOR operation on the value pointed by the direct address and the accumulator, the result of which is stored in the dirrect address."
+},
+{
+    "instruction": "JNZ",
+    "operand": "offset",
+    "chinese": "當累加器中的值不為0時，跳躍至指定位址。",
+    "english": "The JNZ instruction transfers control to the specified address if the value in the accumulator is not 0."
+},
+{
+    "instruction": "JMP",
+    "operand": "@A+DPTR",
+    "chinese": "JMP跳躍至指定位址，該位址由累加器的8位元和DPTR暫存器中的16位元相加組成。",
+    "english": "The JMP instruction transfers execution to the address generated by adding the 8-bit value in the accumulator to the 16-bit value in the DPTR register."
+},
+{
+    "instruction": "MOV",
+    "operand": "@Rn, #immediate",
+    "chinese": "MOV將立即值複製至Rn。",
+    "english": "The MOV instruction moves data bytes between the two specified operands. The immediate value is copied to Rn."
+},
+{
+    "instruction": "MOV",
+    "operand": "@Ri, A",
+    "chinese": "MOV將累加器中的值複製至Ri。",
+    "english": "The MOV instruction moves data bytes between the two specified operands. The value of the accumulator is copied to the Ri."
+},
+{
+    "instruction": "MOV",
+    "operand": "@Ri, direct",
+    "chinese": "MOV將直接位址指向的值複製至Ri。",
+    "english": "The MOV instruction moves data bytes between the two specified operands. The value pointed by the direct address is copied to the Ri."
+},
+{
+    "instruction": "MOV",
+    "operand": "A, #immediatte",
+    "chinese": "MOV將直接位址指向的值複製至累加器。",
+    "english": "The MOV instruction moves data bytes between the two specified operands. The value pointed by the direct address is copied to the accumulator."
+},
+{
+    "instruction": "MOV",
+    "operand": "A, @Ri",
+    "chinese": "MOV將Ri中的值複製至累加器。",
+    "english": "The MOV instruction moves data bytes between the two specified operands. The value of Ri is copied to the accumulator."
+},
+{
+    "instruction": "MOV",
+    "operand": "A, direct",
+    "chinese": "MOV將直接位址指向的值複製至累加器。",
+    "english": "The MOV instruction moves data bytes between the two specified operands. The value pointed by the direct address is copied to the accumulaotr."
+},
+{
+    "instruction": "MOV",
+    "operand": "A, Rn",
+    "chinese": "MOV將Rn中的值複製至累加器。",
+    "english": "The MOV instruction moves data bytes between the two specified operands. The value of Rn is copied to the accumulator."
+},
+{
+    "instruction": "MOV",
+    "operand": "bit, C",
+    "chinese": "MOV將進位位元的值複製至bit。",
+    "english": "The MOV instruction moves data bytes between the two specified operands. The carry is copied to the bit."
+},
+{
+    "instruction": "MOV",
+    "operand": "C, bit",
+    "chinese": "MOV將bit的值複製至進位位元。",
+    "english": "The MOV instruction moves data bytes between the two specified operands. The bit is copied to the carry."
+},
+{
+    "instruction": "MOV",
+    "operand": "dest_direct, src_direct",
+    "chinese": "MOV將來源直接位址指向的值複製至目標直接位址。",
+    "english": "The MOV instruction moves data bytes between the two specified operands. The value pointed by the direct address is copied to the destination direct address."
+},
+{
+    "instruction": "MOV",
+    "operand": "direct, #immediate",
+    "chinese": "MOV將立即值複製至直接位址。",
+    "english": "The MOV instruction moves data bytes between the two specified operands. The immediate value is copied to the direct address."
+},
+{
+    "instruction": "MOV",
+    "operand": "direct, @Rn",
+    "chinese": "MOV將Rn的值複製至直接位址。",
+    "english": "The MOV instruction moves data bytes between the two specified operands. The value of Rn is copied to the direct address."
+},
+{
+    "instruction": "MOV",
+    "operand": "direct, A",
+    "chinese": "MOV將累加器的值複製至直接位址。",
+    "english": "The MOV instruction moves data bytes between the two specified operands. The value of the accumulator is copied to the direct address."
+},
+{
+    "instruction": "MOV",
+    "operand": "direct, Rn",
+    "chinese": "MOV將Rn的值複製至直接位址。",
+    "english": "The MOV instruction moves data bytes between the two specified operands. The value of Rn is copied to the direct address."
+},
+{
+    "instruction": "MOV",
+    "operand": "DPTR, #immediate",
+    "chinese": "MOV將立即值複製至DPTR暫存器。",
+    "english": "The MOV instruction moves data bytes between the two specified operands. The immediate value is copied to the DPTR register."
+},
+{
+    "instruction": "MOV",
+    "operand": "Rn, #immediate",
+    "chinese": "MOV將立即值複製至Rn。",
+    "english": "The MOV instruction moves data bytes between the two specified operands. The immediate value is copied to the Rn."
+},
+{
+    "instruction": "MOV",
+    "operand": "Rn, A",
+    "chinese": "MOV將累加器的值複製至Rn。",
+    "english": "The MOV instruction moves data bytes between the two specified operands. The value of the accumulator is copied to the Rn."
+},
+{
+    "instruction": "MOV",
+    "operand": "Rn, direct",
+    "chinese": "MOV將直接位址指向的值複製至Rn。",
+    "english": "The MOV instruction moves data bytes between the two specified operands. The value pointed by the direct address is copied to the Rn."
+},
+{
+    "instruction": "SJMP",
+    "operand": "offset",
+    "chinese": "SJMP跳躍至指定位址，該位址由PC加2後的位址加上rel組成。",
+    "english": "The SJMP instruction transfers execution to the specified address. The address is calculated by adding the signed relative offset in the second byte of the instruction to the address of the following instruction."
+},
+{
+    "instruction": "MOVC",
+    "operand": "A, @A+DPTR",
+    "chinese": "MOVC將累加器中的值和DPTR暫存器的值相加取得位址後，將該位址中的值複製至累加器。",
+    "english": "The MOVC instruction moves a byte from the program memory to the accumulator"
+},
+{
+    "instruction": "MOVC",
+    "operand": "A, @A+PC",
+    "chinese": "MOVC將PC加1後的值和累加器中的值相加取得位址後，將該位址中的值複製至累加器。",
+    "english": "The MOVC instruction moves a byte from the code to the accumulator"
+},
+{
+    "instruction": "DIV",
+    "operand": "AB",
+    "chinese": "DIV將累加器和暫存器B中的無號8位元相除後，將商數存至累加器，餘數存至暫存器B，進位位元和OV旗號被清空。",
+    "english": "The DIV instuction divides the unsigned 8-bit integer in the accumulator by the unsigned 8-bit integer in register B. After the division, the quotient is stored in the accumulator and the remainder is stored in the B register. The carry and OV flags are cleared."
+},
+{
+    "instruction": "SUBB",
+    "operand": "A, #immdeiate",
+    "chinese": "SUBB將累加器中的值減去進位位元和立即值，並將結果存至累加器，若進位位元有被借位，則設1，若無則清空。",
+    "english": "The SUBB instruction subtracts the immediate value and the carry flag from the accumulator. The result is stored in the accumulator. This instruction sets the carry flag if a borrow is required for bit 7 of the result. If no borrow is required, the carry flag is cleared."
+},
+{
+    "instruction": "SUBB",
+    "operand": "A, @Ri",
+    "chinese": "SUBB將累加器中的值減去進位位元和Ri中的值，並將結果存至累加器，若進位位元有被借位，則設1，若無則清空。",
+    "english": "The SUBB instruction subtracts the value of Ri and the carry flag from the accumulator. The result is stored in the accumulator. This instruction sets the carry flag if a borrow is required for bit 7 of the result. If no borrow is required, the carry flag is cleared."
+},
+{
+    "instruction": "SUBB",
+    "operand": "A, direct",
+    "chinese": "SUBB將累加器中的值減去進位位元和直接位址指向的值，並將結果存至累加器，若進位位元有被借位，則設1，若無則清空。",
+    "english": "The SUBB instruction subtracts the value pointed by the direct address and the carry flag from the accumulator. The result is stored in the accumulator. This instruction sets the carry flag if a borrow is required for bit 7 of the result. If no borrow is required, the carry flag is cleared."
+},
+{
+    "instruction": "SUBB",
+    "operand": "A, Rn",
+    "chinese": "SUBB將累加器中的值減去進位位元和Rn，並將結果存至累加器，若進位位元有被借位，則設1，若無則清空。",
+    "english": "The SUBB instruction subtracts the Rn and the carry flag from the accumulator. The result is stored in the accumulator. This instruction sets the carry flag if a borrow is required for bit 7 of the result. If no borrow is required, the carry flag is cleared."
+},
+{
+    "instruction": "CPL",
+    "operand": "A",
+    "chinese": "CPL將累加器中的值取補數並存回累加器。",
+    "english": "The CPL instruction logically complements the value of the accumulator and stores the result back in the accumulator."
+},
+{
+    "instruction": "CPL",
+    "operand": "bit",
+    "chinese": "CPL將bit取補數並存回bit。",
+    "english": "The CPL instruction logically complements the value of the bit and stores the result back in the bit."
+},
+{
+    "instruction": "CPL",
+    "operand": "C",
+    "chinese": "CPL將進位位元取補數並存回進位位元。",
+    "english": "The CPL instruction logically complements the value of the carry and stores the result back in the carry."
+},
+{
+    "instruction": "CJNE",
+    "operand": "@Rn, #immediate, offset",
+    "chinese": "當Rn的值和立即值不相同時，跳躍至指定位址。",
+    "english": "The CJNE instruction compares the value at Rn and the immediate value and branches to the specified destination if their values are not equal."
+},
+{
+    "instruction": "CJNE",
+    "operand": "A, #immediate, offset",
+    "chinese": "當累加器的值和立即值不相同時，跳躍至指定位址。",
+    "english": "The CJNE instruction compares the value of the accumulator and the immediate value and branches to the specified destination if their values are not equal."
+},
+{
+    "instruction": "CJNE",
+    "operand": "A, direct, offset",
+    "chinese": "當累加器的值和直接位址指向的值不相同時，跳躍至指定位址。",
+    "english": "The CJNE instruction compares the value of the accumulator and the value pointed by the direct address and branches to the specified destination if their values are not equal."
+},
+{
+    "instruction": "CJNE",
+    "operand": "Rn, #immediate, offset",
+    "chinese": "當Rn的值和立即值不相同時，跳躍至指定位址。",
+    "english": "The CJNE instruction compares the value of Rn and the immediate value and branches to the specified destination if their values are not equal."
+},
+{
+    "instruction": "PUSH",
+    "operand": "direct",
+    "chinese": "PUSH將SP加1，並將運算子指向的值存至SP指向內部RAM的位址。",
+    "english": "The PUSH instruction increments the stack pointer and stores the value of the specified byte operand at the internal RAM address indirectly referenced by the stack pointer."
+},
+{
+    "instruction": "CLR",
+    "operand": "A",
+    "chinese": "CLR將累加器的值設為0",
+    "english": "The CLR instruction sets the value of the accumulator to a value of 0."
+},
+{
+    "instruction": "CLR",
+    "operand": "bit",
+    "chinese": "CLR將bit的值設為0",
+    "english": "The CLR instruction sets the bit to a value of 0."
+},
+{
+    "instruction": "CLR",
+    "operand": "C",
+    "chinese": "CLR將進位位元的值設為0",
+    "english": "The CLR instruction sets the carry to a value of 0."
+},
+{
+    "instruction": "SWAP",
+    "operand": "A",
+    "chinese": "SWAP將累加器中的高位元(A7~4)與低位元(A3~0)交換。",
+    "english": "The SWAP instruction exchanges the low-order and high-order nibbles within the accumulator."
+},
+{
+    "instruction": "XCH",
+    "operand": "A, @Ri",
+    "chinese": "XCH將累加器中的值和Ri中的值交換。",
+    "english": "The XCH instruction loads the accumulator with the byte value of the Ri while simultaneously storing the previous contents of the accumulator in the .Ri"
+},
+{
+    "instruction": "XCH",
+    "operand": "A, direct",
+    "chinese": "XCH將累加器中的值和直接位址指向的值交換。",
+    "english": "The XCH instruction loads the accumulator with the byte value of the value pointed by the direct address while simultaneously storing the previous contents of the accumulator in the direct address."
+},
+{
+    "instruction": "XCH",
+    "operand": "A, Rn",
+    "chinese": "XCH將累加器中的值和Rn交換。",
+    "english": "The XCH instruction loads the accumulator with the byte value of the Rn while simultaneously storing the previous contents of the accumulator in the Rn."
+},
+{
+    "instruction": "POP",
+    "operand": "direct",
+    "chinese": "POP將SP間接指向的值存至指定位址，並將SP減1。",
+    "english": "The POP instruction reads a byte from the address indirectly referenced by the SP register. The value read is stored at the specified address and the stack pointer is decremented"
+},
+{
+    "instruction": "SETB",
+    "operand": "bit",
+    "chinese": "SETB將bit設為1",
+    "english": "The SETB instruction sets the bit to a value of 1."
+},
+{
+    "instruction": "SETB",
+    "operand": "C",
+    "chinese": "SETB將進位位元設為1",
+    "english": "The SETB instruction sets the carry to a value of 1."
+},
+{
+    "instruction": "DA",
+    "operand": "A",
+    "chinese": "DA用來做BCD運算。若累加器中低位元(A3~0)的值超過9，或AC旗標為1時，將低位元加6來產生BCD位元；若累加器中高位元(A7~4)的值超過9，或AC旗標為1時，將高位元加6來產生BCD位元。若有進位，則將進位位元設1。",
+    "english": "If Accumulator bits 3-0 are greater than nine (xxx1010-xxx1111), or if the AC flag is one, six is added to the Accumulator, producing the proper BCD digit in the low-order nibble. If the carry flag is now set, or if the four high-order bits now exceed nine (1010xxx-111xxxx), these high-order bits are incremented by six, producing the proper BCD digit in the high-order nibble. This would set the carry flag if there was a carry-out of the high-order bits, but would not clear the carry."
+},
+{
+    "instruction": "DJNZ",
+    "operand": "direct, offset",
+    "chinese": "DJNZ將直接位址指向的值減1，若結果為0，跳躍至指定位址。",
+    "english": "The DJNZ instruction decrements the value pointed by the direct address and, if the resulting value is not zero, branches to the address specified in the second operand."
+},
+{
+    "instruction": "DJNZ",
+    "operand": "Rn, offset",
+    "chinese": "DJNZ將Rn減1，若結果為0，跳躍至指定位址。",
+    "english": "The DJNZ instruction decrements Rn and, if the resulting value is not zero, branches to the address specified in the second operand."
+},
+{
+    "instruction": "MOVX",
+    "operand": "@Ri, A",
+    "chinese": "MOVX將累加器的值載入至外部記憶體中，該外部記憶體由Ri定址。",
+    "english": "The MOVX instruction transfers data between the accumulator and external data memory. External memory may be addressed via 8-bits in the Ri registers."
+},
+{
+    "instruction": "MOVX",
+    "operand": "A, @DPTR",
+    "chinese": "MOVX將外部記憶體的值載入至累加器中，該外部記憶體由DPTR暫存器定址",
+    "english": "The MOVX instruction transfers data between the accumulator and external data memory. External memory may be addressed via 16-bits in the DPTR register."
+},
+{
+    "instruction": "MOVX",
+    "operand": "A, @Ri",
+    "chinese": "MOVX將外部記憶體的值載入至累加器中，該外部記憶體由Ri定址",
+    "english": "The MOVX instruction transfers data between the accumulator and external data memory. External memory may be addressed via 8-bits in the Ri registers."
+}
+]
