@@ -614,13 +614,13 @@
 {
     "instruction": "DJNZ",
     "operand": "direct, offset",
-    "chinese": "DJNZ將直接位址指向的值減1，若結果為0，跳躍至指定位址。",
+    "chinese": "DJNZ將直接位址指向的值減1，若結果不為0，跳躍至指定位址。",
     "english": "The DJNZ instruction decrements the value pointed by the direct address and, if the resulting value is not zero, branches to the address specified in the second operand."
 },
 {
     "instruction": "DJNZ",
     "operand": "Rn, offset",
-    "chinese": "DJNZ將Rn減1，若結果為0，跳躍至指定位址。",
+    "chinese": "DJNZ將Rn減1，若結果不為0，跳躍至指定位址。",
     "english": "The DJNZ instruction decrements Rn and, if the resulting value is not zero, branches to the address specified in the second operand."
 },
 {
