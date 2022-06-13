@@ -1,11 +1,5 @@
 [
 {
-    "instruction": "NOP",
-    "operand": "NULL",
-    "chinese": "NOP沒有做任何動作，此指令被用來產生延遲或在程式記憶體保留空間。",
-    "english": "The NOP instruction does nothing.NOP is typically used to generate a delay in execution or to reserve space in code memory."
-},
-{
     "instruction": "AJMP",
     "operand": "addr11",
     "chinese": "AJMP為絕對轉移指令。目標位址為PC加2後的高5位(A15~A11)和指令第一位元組的低高3位(A10~8)，以及第二位元組(A7~0)構成。可跳躍範圍為2^11B(2KB)。",
@@ -40,6 +34,12 @@
     "operand": "direct",
     "chinese": "將位址指向的值加1。",
     "english": "increments the value pointed by the direct address by 1."
+},
+{
+    "instruction": "INC",
+    "operand": "DOTR",
+    "chinese": "將DPTR的值加1。",
+    "english": "increments the value of DPTR address by 1."
 },
 {
     "instruction": "INC",
@@ -450,6 +450,12 @@
     "english": "The MOV instruction moves data bytes between the two specified operands. The value pointed by the direct address is copied to the Rn."
 },
 {
+    "instruction": "MUL",
+    "operand": "AB",
+    "chinese": "MUL將累加器中的8位元和暫存器B中的8位元相乘得到16位元的值，結果的低位元存在累加器中，高位元存在暫存器B中，若結果大於255(0FFH)，OV旗號的值設為1，反之則清空。",
+    "english": "The MUL instruction multiplies the unsigned 8-bit integer in the accumulator and the unsigned 8-bit integer in the B register producing a 16-bit product. The low-order byte of the product is returned in the accumulator. The high-order byte of the product is returned in the B register. The OV flag is set if the product is greater than 255 (0FFh), otherwise it is cleared. "
+},
+{
     "instruction": "SJMP",
     "operand": "offset",
     "chinese": "SJMP跳躍至指定位址，該位址由PC加2後的位址加上rel組成。",
@@ -588,6 +594,12 @@
     "english": "The XCH instruction loads the accumulator with the byte value of the Rn while simultaneously storing the previous contents of the accumulator in the Rn."
 },
 {
+    "instruction": "XCHD",
+    "operand": "A, @Ri",
+    "chinese": "XCHD將累加器中的低位元組和RAM中指定位址的低位元組交換，RAM的位址由R0或R1間接定址。",
+    "english": "The XCHD instruction exchanges the low-order nibble of the accumulator with the low-order nibble of the specified internal RAM location. The internal RAM is accessed indirectly through R0 or R1. "
+},
+{
     "instruction": "POP",
     "operand": "direct",
     "chinese": "POP將SP間接指向的值存至指定位址，並將SP減1。",
@@ -640,5 +652,11 @@
     "operand": "A, @Ri",
     "chinese": "MOVX將外部記憶體的值載入至累加器中，該外部記憶體由Ri定址",
     "english": "The MOVX instruction transfers data between the accumulator and external data memory. External memory may be addressed via 8-bits in the Ri registers."
+},
+{
+    "instruction": "NOP",
+    "operand": "NULL",
+    "chinese": "NOP沒有做任何動作，此指令被用來產生延遲或在程式記憶體保留空間。",
+    "english": "The NOP instruction does nothing.NOP is typically used to generate a delay in execution or to reserve space in code memory."
 }
 ]
