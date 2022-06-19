@@ -37,7 +37,7 @@
 },
 {
     "instruction": "INC",
-    "operand": "DOTR",
+    "operand": "DPTR",
     "chinese": "將DPTR的值加1。",
     "english": "increments the value of DPTR address by 1."
 },
